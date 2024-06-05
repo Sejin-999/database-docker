@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mariadb:
+    build: .
+    container_name: nc-db-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPass
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+#    command: bash -c "apt-get update && apt-get install -y mariadb-client && docker-entrypoint.sh mysqld"
